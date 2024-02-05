@@ -1,0 +1,960 @@
+/* Importing Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Sail&family=Sarala&family=Ubuntu:wght@300;400;700&display=swap');
+
+
+/* CSS global variables */
+:root {
+	/* Font families */
+	--ubuntu: 'Ubuntu', sans-serif;
+	--sarala: 'Sarala', sans-serif;
+	--sail: 'Sail', system-ui;
+	--pt-sans: 'PT Sans', sans-serif;
+	--f-weight-normal: 400;
+	--f-weight-bold: 700;
+
+
+	/* Colors */
+	--trans-orange: #FFC001CC;
+	--black: #000;
+	--white: #FFF;
+	--btn-bg: #218CAC;
+
+
+	/* Custom size for elements */
+	--title-font-size: 150px;
+	--sub-title-font-size: 30px;
+}
+
+/*
+CSS indexing for different sections:
+
+1. Header CSS & Mobile Menu CSS
+2. Banner CSS
+3. About US CSS 
+4. Testimonial CSS
+5. Social CSS 
+6. Service CSS
+7. Contact CSS
+8. Footer CSS 
+
+*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	max-width: 100%;
+	font-size: 62.2%;
+	overflow: hidden scroll;
+	scroll-behavior: smooth;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	user-select: none;
+}
+
+button {
+	border: none;
+	outline: none;
+}
+
+body {
+	text-rendering: optimizelegibility;
+	overflow: hidden;
+	font-size: 16px;
+	line-height: 1.5;
+	position: static;
+	background: var(--primary-color);
+}
+
+/* Common Styles - Applies to Multiple Elements */
+.title {
+	font-family: var(--sarala);
+	font-size: var(--title-font-size);
+	color: #D67F70;
+	opacity: 0.09;
+	font-weight: var(--f-weight-normal);
+	line-height: 120px;
+	letter-spacing: 0em;
+	text-transform: uppercase;
+}
+
+.sub-title {
+	font-family: var(--ubuntu);
+	font-size: 30px;
+	font-weight: var(--f-weight-normal);
+	line-height: 48px;
+	letter-spacing: 0.05em;
+	color: var(--black);
+	word-wrap: break-word;
+	margin-top: -25px;
+
+}
+
+.animated-button {
+	width: 190px;
+	height: 50px;
+	position: relative;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border-color: transparent;
+	font-family: var(--sarala);
+	font-weight: var(--f-weight-normal);
+	font-size: 15px;
+	text-align: center;
+	text-decoration: none;
+	overflow: hidden;
+	color: #fff;
+	cursor: pointer;
+	overflow: hidden;
+	background-color: #3498db;
+	text-transform: uppercase;
+
+}
+
+.animated-button span {
+	position: relative;
+	z-index: 1;
+	transition: color 0.3s ease-out;
+}
+
+.animated-button::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform 0.6s ease-out;
+	z-index: 0;
+}
+
+.animated-button:hover span {
+	color: #feffff;
+}
+
+.animated-button:hover::before {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+/* Loader CSS */
+.loader-wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fbba0b;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 999;
+}
+
+.loader {
+	border: 5px solid #ffffffe3;
+	border-top: 5px solid #1E8DAE;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	animation: spin 0.4s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* Loader CSS */
+
+/* Progress bar CSS */
+.progress-container {
+	width: 100%;
+	height: 5px;
+	background-color: #FFC001CC;
+	position: fixed;
+	top: 0;
+	z-index: 999;
+}
+
+.progress-bar {
+	height: 100%;
+	width: 0;
+	background-color: #1E8DAE;
+	transition: width 0.1s ease;
+}
+
+/* Progress bar CSS */
+
+
+/* Scroll bar CSS */
+
+/* For Webkit (Chrome, Safari, Opera) */
+::-webkit-scrollbar {
+	width: 15px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #ffc001;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #1E8DAE;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #555;
+}
+
+/* For Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #1E8DAE #ffc001;
+}
+
+*::-webkit-scrollbar {
+	width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+	background-color: #ffc001;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: #1E8DAE;
+	border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background-color: #555;
+}
+
+
+/* SCroll Bar CSS */
+
+/* 1 Header CSS */
+header {
+	width: 100%;
+	height: 78px;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	background-color: #FFC001CC;
+	position: fixed;
+	top: 0;
+	z-index: 21;
+}
+
+.backDrop {
+	backdrop-filter: blur(6px);
+}
+
+nav {
+	padding-right: 37px;
+	user-select: none;
+}
+
+nav ul {
+	display: flex;
+}
+
+nav ul li {
+	margin-left: 55px;
+}
+
+nav ul li a,
+.mobile-menu ul li a {
+	font-family: var(--ubuntu);
+	font-weight: var(--f-weight);
+	font-size: 20px;
+	line-height: 72px;
+	text-decoration: none;
+	color: #1E8DAE;
+}
+
+.humburger {
+	position: relative;
+	width: 32px;
+	height: 18px;
+	background: transparent;
+	cursor: pointer;
+	display: block;
+	margin-right: 49px;
+	display: none;
+}
+
+.humburger span {
+	display: block;
+	position: absolute;
+	height: 3px;
+	width: 100%;
+	background: #1E8DAE;
+	border-radius: 9px;
+	opacity: 1;
+	left: 0;
+	transform: rotate(0deg);
+	transition: .25s ease-in-out;
+}
+
+.humburger span:nth-of-type(1) {
+	top: 0px;
+	transform-origin: left center;
+}
+
+.humburger span:nth-of-type(2) {
+	top: 50%;
+	transform: translateY(-50%);
+	transform-origin: left center;
+}
+
+.humburger span:nth-of-type(3) {
+	top: 100%;
+	transform-origin: left center;
+	transform: translateY(-100%);
+}
+
+
+/* Mobile Menu CSS */
+.mobile-menu-wrapper {
+	width: 415px !important;
+	background-color: #ffc001f5;
+}
+
+.mobile-menu {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.mobile-menu .close {
+	position: absolute;
+	top: 6px;
+	border: none;
+	outline: none;
+	background: none;
+	left: 14px;
+	cursor: pointer;
+}
+
+.mobile-menu .close i {
+	font-size: 25px;
+	color: #1E8DAE;
+}
+
+.mobile-menu ul li {
+	margin: 0 0 3px 0;
+	text-align: center;
+}
+
+.mobile-menu ul li a {
+	line-height: 60px;
+}
+
+
+/* Mobile Menu CSS */
+
+/* 1 Header CSS */
+
+
+/* 2 Banner CSS */
+.banner {
+	--banner-width: 100%;
+	--banner-height: 100vh;
+	position: relative;
+	width: var(--banner-width);
+	height: var(--banner-height);
+}
+
+.logo {
+	position: absolute;
+	top: calc(var(--banner-height) * 0.11);
+	left: calc(var(--banner-width) * 0.044);
+	z-index: 11;
+}
+
+.logo img {
+	max-width: 100%;
+	height: auto;
+}
+
+.cover-img {
+	position: relative;
+	z-index: -1;
+}
+
+.cover-img .banner-image {
+	clip-path: polygon(119% 0, 50% 114%, 0 0);
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+
+}
+
+.banner-title {
+	position: absolute;
+	top: calc(var(--banner-height) * 0.68);
+	left: calc(var(--banner-width) * 0.046);
+}
+
+.banner-title h1 {
+	font-family: var(--ubuntu);
+	font-size: 50px;
+	font-weight: var(--f-weight-bold);
+	line-height: 72px;
+	width: 44%;
+}
+
+.banner .banner-ellipse {
+	position: absolute;
+	top: calc(var(--banner-height) * 0.57);
+	left: calc(var(--banner-width) * 0.30);
+	z-index: -2;
+}
+
+/* 2 Banner CSS */
+
+
+/* 3 About US CSS */
+.about-wrapper {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+
+
+}
+
+
+.about-wrapper .about-images-container {
+	width: 17%;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin-top: 93px;
+	z-index: 10;
+}
+
+.about-images-container img {
+	max-width: 100%;
+	height: 253px;
+	object-fit: cover;
+}
+
+
+.about-images-container .about-image-1 {
+	clip-path: polygon(0 67%, 100% 0, 100% 99%, 0 100%);
+}
+
+.about-images-container .about-image-4 {
+	clip-path: polygon(0 0, 100% 0, 100% 67%, 0 100%);
+}
+
+.about-wrapper .about-description-container {
+	width: 83%;
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.about-wrapper .about-description-container .about-us-shape {
+	position: absolute;
+	width: 100%;
+	top: -65%;
+	right: -4px;
+	height: 1834px;
+	z-index: -1;
+}
+
+.about-us-title-container {
+	position: absolute;
+	top: -162px;
+	left: 5%;
+	text-align: center;
+}
+
+.about-us-title-container .title {
+	opacity: 0.11 !important;
+}
+
+.about-us-title-container .about-subtitle {
+	word-wrap: break-word;
+	width: 49%;
+	margin: auto;
+	margin-top: -25px;
+}
+
+.about-slider {
+	height: 100%;
+}
+
+.about-description-container .owl-wrapper-outer {
+	height: 100% !important;
+}
+
+.about-description-container .owl-wrapper {
+	height: 100% !important;
+}
+
+.about-description-container .owl-item {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	transform: translate(68px, -123px);
+}
+
+.about-description-container .owl-controls .owl-pagination {
+	position: absolute;
+	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform: rotate(334deg) translate(277px, 74px);
+}
+
+.about-description-container .owl-controls .owl-pagination>div {
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background-color: #D1AF5D;
+	margin: 0 6px;
+}
+
+.about-description-container .owl-controls .owl-pagination div.active {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.about-description-container .owl-controls .owl-pagination div.active::before {
+	content: '';
+	display: block;
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+	position: absolute;
+	background-color: #FFFFFF;
+}
+
+.description-section .description {
+	display: flex;
+	flex-direction: row;
+	margin: 0 0 51px 0;
+}
+
+.description-section .description:last-child {
+	margin-bottom: 0;
+}
+
+.description span {
+	font-family: var(--ubuntu);
+	font-size: 35px;
+	font-weight: var(--f-weight-bold);
+	line-height: 30px;
+	letter-spacing: 0em;
+	text-align: center;
+	color: var(--black);
+	display: inline-block;
+	margin-right: 44px;
+}
+
+.description p {
+	font-family: var(--ubuntu);
+	font-size: 24px;
+	font-weight: var(--f-weight-normal);
+	line-height: 32px;
+	letter-spacing: 0em;
+	color: var(--black);
+
+}
+
+.button-container .get-in-touch {
+	transform: translate(22px, 60px);
+}
+
+/* 3 About US CSS */
+
+
+/* 4 Testimonials CSS */
+
+.testimonial-wrapper {
+	position: relative;
+	z-index: 9;
+}
+
+
+.ellipse-qutoes-container {
+	width: 32%;
+	height: 499px;
+	position: absolute;
+	left: 10%;
+	top: -292px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+
+}
+
+.ellipse-qutoes-container .testiomonial-icon-quotes {
+	transform: translate(90px, -284px);
+}
+
+.testimonial-section {
+	width: 50%;
+	position: absolute;
+	top: -141px;
+	left: 26%;
+}
+
+.testimonial-section .testimonial-container {
+	position: absolute;
+	top: -100px;
+	left: 31%;
+}
+
+.testimonial {
+	width: 78%;
+	text-align: center;
+	margin: auto;
+}
+
+.testimonial .testimonial-qutoes {
+	font-family: var(--ubuntu);
+	font-size: 30px;
+	font-weight: 300;
+	line-height: 48px;
+	letter-spacing: 0em;
+	color: var(--black);
+}
+
+
+.testimonial .client-name {
+	font-family: var(--ubuntu);
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 15px;
+	letter-spacing: 0.03em;
+	color: var(--black);
+	display: inline-block;
+	margin-top: 40px;
+	letter-spacing: 0.03em;
+}
+
+.testimonial-section .arrow-container {
+	display: flex;
+	justify-content: end;
+	transform: translate(-138px, 50px);
+}
+
+.testimonial-section .arrow-container .btn-prev {
+	margin-right: 24px;
+}
+
+.testimonial-section .arrow-container .btn-prev i,
+.testimonial-section .arrow-container .btn-next i {
+	font-size: 20px;
+}
+
+/* 4 Testimonials CSS */
+
+
+/* 5 Social CSS */
+
+.social-wrapper {
+	--social-width: 100%;
+	--social-height: 109vh;
+	height: var(--social-height);
+	position: relative;
+}
+
+.social-wrapper .social-shape {
+
+	position: absolute;
+	width: 100%;
+	height: 1393px;
+	z-index: -1;
+	transform: rotate(-2deg) translate(16px, -145px) skew(3deg, 10deg);
+}
+
+.social-title {
+	text-align: center;
+	transform: translate(-54px, 365px);
+	opacity: 0.04 !important;
+	color: #000000;
+}
+
+.social-media-icon-container {
+	display: flex;
+	justify-content: end;
+	transform: translate(0, 749px);
+	padding-right: 29px;
+	position: relative;
+	z-index: 20;
+}
+
+.social-media-icon-container ul {
+	display: flex;
+	flex-direction: column;
+	gap: 27px;
+}
+
+.social-media-icon-container ul li:first-child {
+	transform: translateX(-76px) translateY(-31px);
+}
+
+.social-media-icon-container ul li:first-child::after {
+	content: '';
+	width: 150px;
+	height: 1px;
+	background-color: #FFFFFF;
+	display: block;
+	transform: translate(50px, 35px) rotate(154deg);
+}
+
+.social-media-icon-container ul li a {
+	display: flex;
+	align-items: center;
+	font-family: var(--ubuntu);
+	font-weight: 700;
+	line-height: 48px;
+	letter-spacing: 0em;
+}
+
+.social-media-icon-container ul li a span {
+	font-size: 24px;
+	display: inline-block;
+	margin-right: 29px;
+	color: #FFFFFF;
+}
+
+/* 5 Social CSS */
+
+
+/* 6 Service CSS */
+
+.service-wrapper {
+	padding: 0 0 90px 0;
+	position: relative;
+
+}
+
+.service-container {
+	padding-left: 70px;
+}
+
+.service-header {
+	transform: translateY(-133px) translateX(252px);
+}
+
+.service-header .service-title {
+	color: #afa0a0;
+	opacity: 00.08 !important;
+}
+
+.service-header .service-sub-title {
+	width: 35%;
+	margin-top: -25px;
+	text-align: center;
+}
+
+.card-container {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+	gap: 95px;
+	transform: translateY(-20px);
+}
+
+.card {
+	text-align: center;
+	width: 414px;
+	height: 414px;
+	border-radius: 50%;
+	background-color: #FFF4D4;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.4s cubic-bezier(0.15, 0.83, 0.66, 1);
+	cursor: pointer;
+}
+
+.card:hover {
+	transform: scale(1.1);
+}
+
+.card .card-title {
+	font-family: var(--ubuntu);
+	font-size: 30px;
+	font-weight: var(--f-weight-normal);
+	line-height: 48px;
+	letter-spacing: 0.05em;
+	margin-bottom: 10px;
+
+}
+
+.card .card-description {
+	font-family: var(--ubuntu);
+	font-size: 15px;
+	font-weight: var(--f-weight-normal);
+	line-height: 30px;
+	letter-spacing: 0.05em;
+	width: 65%;
+}
+
+.card .card-link {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	font-family: var(--ubuntu);
+	font-size: 15px;
+	font-weight: var(--f-weight-normal);
+	line-height: 30px;
+	letter-spacing: 0.05em;
+	color: var(--black);
+	margin-top: 20px;
+	gap: 8px;
+}
+
+.button-container .view-more {
+	transform: translateY(62px) translateX(272px);
+
+}
+
+/* 6 Service CSS */
+
+
+/* 7 Contact CSS */
+.contact-wrapper {
+	position: relative;
+	display: flex;
+	justify-content: end;
+	align-items: end;
+}
+
+.contact-wrapper .contact-container {
+	z-index: 10;
+	padding-bottom: 75px;
+	padding-top: 445px;
+}
+
+.contact-wrapper .contact-shape {
+	position: absolute;
+	right: 0;
+	width: 100%;
+	top: -254px;
+	z-index: -1;
+	height: 1184px;
+}
+
+.contact-header {
+	margin-left: 33vh;
+}
+
+.contact-header .contact-title {
+	color: #afa0a0;
+	opacity: 00.08 !important;
+}
+
+.contact-header .contact-sub-title {
+	width: 60%;
+	text-align: center;
+}
+
+.contact-wrapper .contact-form {
+	margin-top: 80px;
+}
+
+.contact-form .form-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"] {
+	width: 300px;
+	height: 50px;
+	border: 1px solid var(--black);
+	padding: 0 30px;
+	font-family: var(--ubuntu);
+	font-size: 15px;
+	font-weight: var(--f-weight-normal);
+	line-height: 15px;
+	letter-spacing: 0.1em;
+	margin: 0 0 0 65px;
+
+}
+
+.form-container .form-column {
+	margin: 0 0 32px 0;
+}
+
+.form-container .form-column:nth-child(1)>input[name="name"],
+.form-container .form-column:nth-child(2)>input[name="phone"] {
+	margin-left: 0;
+}
+
+.form-container .form-column:nth-child(2) {
+	margin: 0;
+}
+
+.form-container .button-container {
+	margin: 64px 0 0 0;
+}
+
+/* Contact CSS */
+
+
+/* 7 Footer CSS */
+
+footer {
+	width: 100%;
+	height: 68px;
+	background-color: #FFC001;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+footer .footer-container p {
+	font-family: var(--pt-sans);
+	font-size: 15px;
+	font-weight: var(--f-weight-normal);
+	line-height: 23px;
+	letter-spacing: 0em;
+
+}
+
+footer .footer-container p span {
+	font-family: var(--sail);
+	font-size: 20px;
+	font-weight: var(--f-weight-normal);
+	line-height: 19px;
+	letter-spacing: 0em;
+}
+
+/* 7 Footer CSS */
