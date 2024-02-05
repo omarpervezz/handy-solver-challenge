@@ -675,6 +675,14 @@ nav ul li a,
 .testimonial-section .arrow-container .btn-prev i,
 .testimonial-section .arrow-container .btn-next i {
 	font-size: 20px;
+	color: #000000;
+	transition: opacity 0.4s ease-in;
+}
+
+.testimonial-section .arrow-container .btn-prev:hover i,
+.testimonial-section .arrow-container .btn-next:hover i {
+	
+	opacity: 0.4;
 }
 
 /* 4 Testimonials CSS */
